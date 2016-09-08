@@ -15,7 +15,7 @@ That is why these kind of messages (or at least brief reminders with links to fu
 
 By this communication and synchronization between developers (here: users of the Jenkins) and the operating crew is facilitated.
 
-# Other Work
+# Search for Existing Work
 
 ## Page Markup Plugin
 
@@ -24,3 +24,16 @@ However, as it is a very generic plugin, properly formatting the necessary HTML 
 Moreover, there is no mechanism to disable viewing the panel without removing the HTML code entirely. Again as a sort of workaround it would be possible to use HTML comments to remove the relevant sections.
 
 All in all, the plugin would be able to serve the purpose. However, usability is expected to be bad, as the plugin is considered to be too generic for easy handling for the group of administrators.
+
+## PageDecorator Scan
+
+Scanning the [where-used list of the PageDecorator Extension Point](https://wiki.jenkins-ci.org/display/JENKINS/Extension+points#Extensionpoints-hudson.model.PageDecorator) led to the detection of the Page Markup Plugin as discussed above. Further plugins which may serve the same purpose as depicted above, could not be found (as of 2016-09).
+
+## Google Search
+
+Several searches for "jenkins plugin" plus additional terms on
+
+* system message
+* message panel
+
+have been performed, but none of the plugins seem to properly go into the desired direction. 
