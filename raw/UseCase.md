@@ -17,12 +17,14 @@ By this communication and synchronization between developers (here: users of the
 
 # Search for Existing Work
 
-## System message on "Jenkins is going to shutdown"
+## System message on "Jenkins is going to shut down"
 
-If Jenkins is preparing to shutdown (either for "safe restart" or in "prepare for shutdown" mode), a message box is provided on top of all main pages. However, this approach lacks several aspects:
+If Jenkins is preparing to shut down (either for "safe restart" or in "prepare for shutdown" mode), a message box is provided on top of all main pages. However, this approach lacks several aspects:
 
-* The message is not customizable (the text is hard-coded and cannot be configured).
+* The message is not configurable (the text is [hard-coded](https://github.com/jenkinsci/jenkins/blob/9fce1ee933eb5276baff977d562fc8e183f1c8d6/core/src/main/resources/lib/layout/main-panel.jelly#L33) and cannot be configured).
 * The message is only shown in case the system is in a cool-down phase. To obvious reasons, system messages which are not related to an immediate shutdown of the Jenkins servers cannot be communicated to the users using this approach.
+
+It was considered to provide patches to [Jenkins Core](https://github.com/jenkinsci/jenkins). However, given the second aspect discussed above yields that this only would partly solve the use case.
 
 ## Page Markup Plugin
 
