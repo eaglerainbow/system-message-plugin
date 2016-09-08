@@ -26,6 +26,13 @@ If Jenkins is preparing to shut down (either for "safe restart" or in "prepare f
 
 It was considered to provide patches to [Jenkins Core](https://github.com/jenkinsci/jenkins). However, given the second aspect discussed above yields that this only would partly solve the use case.
 
+## Welcome Message
+
+The welcome message (see also `/configure` - welcome message) is a configuration option to provide any arbitrary text. It is being displayed on the Jenkins Main screen above the view tabs.
+Usage of this configuration settings yielded the experience that messages written there are only read by a minor fraction of users: In most cases frequent users of the server bookmark their jobs directly and are not using the main page with the tabs to navigate to their target. 
+
+Therefore, the message is not shown to them and thus will not be read.  
+
 ## Page Markup Plugin
 
 The [Page Markup Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Page+Markup+Plugin) may serve the purpose.
