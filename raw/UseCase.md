@@ -36,7 +36,7 @@ Therefore, the message is not shown to them and thus will not be read.
 ## Page Markup Plugin
 
 The [Page Markup Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Page+Markup+Plugin) may serve the purpose.
-However, as it is a very generic plugin, properly formatting the necessary HTML coding can be cumbersome. As depicted on the plugin's wiki page, there is the directory userContent/ available to the rescue, but still major parts of the entire system message panel would have to stay in the plugin's configuration.
+However, as it is a very generic plugin, properly formatting the necessary HTML coding can be cumbersome. As depicted on the plugin's wiki page, there is the directory `userContent/` available to the rescue, but still major parts of the entire system message panel would have to stay in the plugin's configuration.
 Moreover, there is no mechanism to disable viewing the panel without removing the HTML code entirely. Again as a sort of workaround it would be possible to use HTML comments to remove the relevant sections.
 
 All in all, the plugin would be able to serve the purpose. However, usability is expected to be bad, as the plugin is considered to be too generic for easy handling for the group of administrators.
