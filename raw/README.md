@@ -6,3 +6,4 @@ The folder is not participating in the build process, but serves as depot of mat
 ## Additional Links
 
 * [Jenkins Plugin Tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)
+* [Page Markup Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Page+Markup+Plugin) - Plugin which may serve as template for creating this one (this plugin is too generic and is a bit too generic/flexible for the purpose (the administrator requires to have HTML/CSS knowledge to achieve the same effect).
