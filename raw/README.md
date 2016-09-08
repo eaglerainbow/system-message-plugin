@@ -5,4 +5,4 @@ The folder is not participating in the build process, but serves as depot of mat
 
 ## Additional Links
 
-* [Jenkins Plugin Tutoria](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)
+* [Jenkins Plugin Tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)
