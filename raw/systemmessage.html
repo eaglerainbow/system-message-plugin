@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Test</title>
+<style>
+  body {
+	font-family: Arial;
+  }
+  #messagebox {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+	border-style: dashed;
+	border-width: 4px;
+	border-color: red;
+	border-radius: 15px;
+	background-color: #ff6666;
+	padding: 5px 15px 15px 15px;
+	width: 38.2%;
+	color: white;
+	opacity: 0.5;
+  }
+  
+  #messagebox:hover {
+	opacity: 1.0;
+  }
+  
+  #messagebox p {
+	margin-top: 1px; 
+  }
+  
+  #heading {
+	font-size: 1.6em;
+	text-decoration: underline;
+  }
+  
+  #messagebox #hidelink {
+	position: absolute;
+	right: 8px;
+	top: 5px;
+  }
+</style>
+<script type="text/javascript">
+function hideDiv(id) {
+	document.getElementById(id).style.display = 'none';
+}
+</script>
+</head>
+<body>
+  <div id="messagebox">
+	  <p align="center" id="heading">Attention!</p>
+	  <p>Hello World</p>
+	  <div id="hidelink"><a href="javascript:hideDiv('messagebox')">Hide</a></div>
+  </div>
+</body>
+</html>
