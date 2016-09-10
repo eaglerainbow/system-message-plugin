@@ -21,25 +21,25 @@ By this communication and synchronization between developers (here: users of the
 
 If Jenkins is preparing to shut down (either for "safe restart" or in "prepare for shutdown" mode), a message box is provided on top of all main pages. However, this approach lacks several aspects:
 
-* The message is not configurable (the text is [hard-coded](https://github.com/jenkinsci/jenkins/blob/9fce1ee933eb5276baff977d562fc8e183f1c8d6/core/src/main/resources/lib/layout/main-panel.jelly#L33) and cannot be configured).
-* The message is only shown in case the system is in a cool-down phase. To obvious reasons, system messages which are not related to an immediate shutdown of the Jenkins servers cannot be communicated to the users using this approach.
+* The message is not configurable (i.e. the text is [hard-coded](https://github.com/jenkinsci/jenkins/blob/9fce1ee933eb5276baff977d562fc8e183f1c8d6/core/src/main/resources/lib/layout/main-panel.jelly#L33) and cannot be changed by the administrator).
+* The message is only shown in case the system is in a cool-down phase. To obvious reasons, system messages, which are not related to an immediate shutdown of the Jenkins servers, cannot be displayed to the users using this approach.
 
-It was considered to provide patches to [Jenkins Core](https://github.com/jenkinsci/jenkins). However, given the second aspect discussed above yields that this only would partly solve the use case.
+It was considered to provide patches to [Jenkins Core](https://github.com/jenkinsci/jenkins). However, given the second aspect discussed above yields that this only would partly solve the use case (i.e. those cases, where the system message is related to a downtime).
 
 ## Welcome Message
 
-The welcome message (see also `/configure` - welcome message) is a configuration option to provide any arbitrary text. It is being displayed on the Jenkins Main screen above the view tabs.
-Usage of this configuration settings yielded the experience that messages written there are only read by a minor fraction of users: In most cases frequent users of the server bookmark their jobs directly and are not using the main page with the tabs to navigate to their target. 
-
-Therefore, the message is not shown to them and thus will not be read.  
+The welcome message (see also `/configure` - welcome message) is a configuration option to show any arbitrary text. It is being displayed on the Jenkins main screen above the view tabs.
+Usage of this configuration settings yielded the experience that messages written there are only read by a minor fraction of users: In most cases, frequent users of the server bookmark their jobs directly and are not using the main page with the tabs to navigate to their target. Therefore, the message is not shown to them and thus will not be read.  
 
 ## Page Markup Plugin
 
 The [Page Markup Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Page+Markup+Plugin) may serve the purpose.
 However, as it is a very generic plugin, properly formatting the necessary HTML coding can be cumbersome. As depicted on the plugin's wiki page, there is the directory `userContent/` available to the rescue, but still major parts of the entire system message panel would have to stay in the plugin's configuration.
-Moreover, there is no mechanism to disable viewing the panel without removing the HTML code entirely. Again as a sort of workaround it would be possible to use HTML comments to remove the relevant sections.
+Moreover, there is no mechanism to disable viewing the panel without removing the HTML code entirely. Again, as a sort of workaround, it would be possible to use HTML comments to remove the relevant sections.
 
 All in all, the plugin would be able to serve the purpose. However, usability is expected to be bad, as the plugin is considered to be too generic for easy handling for the group of administrators.
+
+Extending this plugin would be an option, but, on the other hand, this would jeopardize the genericity of the approach the plugin has chosen.
 
 ## PageDecorator Scan
 
