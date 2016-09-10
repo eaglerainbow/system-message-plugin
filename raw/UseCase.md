@@ -39,7 +39,7 @@ Moreover, there is no mechanism to disable viewing the panel without removing th
 
 All in all, the plugin would be able to serve the purpose. However, usability is expected to be bad, as the plugin is considered to be too generic for easy handling for the group of administrators.
 
-Extending this plugin would be an option, but, on the other hand, this would jeopardize the generosity of the approach the plugin has chosen.
+Extending this plugin would be an option, but, on the other hand, this would jeopardize the generality of the approach the plugin has chosen.
 
 ## PageDecorator Scan
 
