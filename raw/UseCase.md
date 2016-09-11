@@ -53,9 +53,10 @@ The following discussion on very similar topics has already taken place on the J
 
 ## Google Search
 
-Several searches for "jenkins plugin" plus additional terms on
+Several searches for "jenkins" plus additional terms on
 
 * system message
 * message panel
+* PageDecorator
 
 have been performed, but none of the plugins seem to properly go into the desired direction. 
