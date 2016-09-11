@@ -49,7 +49,7 @@ Scanning the [where-used list of the PageDecorator Extension Point](https://wiki
 
 There were some discussion on very similar topics already on the Jenkins mailing lists:
 
-* [Custom login screen message](https://groups.google.com/forum/#!msg/jenkinsci-users/v8GxcZtfq60/CYzpUh_yc8gJ;context-place=searchin/jenkinsci-users/%22system$20message%22%7Csort:relevance). The question is raised whether there is an opportunity to put a message on the login page. The suggestion provided was to use the "system massage" (in fact the welcome message is meant), which then turns out to be only visible on the main page. The thread pettered out without alternative or conclusion. 
+* [Custom login screen message](https://groups.google.com/forum/#!msg/jenkinsci-users/v8GxcZtfq60/CYzpUh_yc8gJ;context-place=searchin/jenkinsci-users/%22system$20message%22%7Csort:relevance): The question is raised whether there is an opportunity to put a message on the login page. The suggestion provided was to use the "system massage" (in fact the welcome message is meant), which then turns out to be only visible on the main page. The thread pettered out without alternative or conclusion. 
 
 ## Google Search
 
