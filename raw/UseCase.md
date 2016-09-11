@@ -45,6 +45,12 @@ Extending this plugin would be an option, but, on the other hand, this would jeo
 
 Scanning the [where-used list of the PageDecorator Extension Point](https://wiki.jenkins-ci.org/display/JENKINS/Extension+points#Extensionpoints-hudson.model.PageDecorator) led to the detection of the Page Markup Plugin as discussed above. Further plugins which may serve the same purpose as depicted above, could not be found (as of 2016-09).
 
+## Discussions on mailing list
+
+There were some discussion on very similar topics already on the Jenkins mailing lists:
+
+* [Custom login screen message](https://groups.google.com/forum/#!msg/jenkinsci-users/v8GxcZtfq60/CYzpUh_yc8gJ;context-place=searchin/jenkinsci-users/%22system$20message%22%7Csort:relevance). The question is raised whether there is an opportunity to put a message on the login page. The suggestion provided was to use the "system massage" (in fact the welcome message is meant), which then turns out to be only visible on the main page. The thread pettered out without alternative or conclusion. 
+
 ## Google Search
 
 Several searches for "jenkins plugin" plus additional terms on
