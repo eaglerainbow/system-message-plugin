@@ -1,5 +1,14 @@
 <!-- Header file for the System Message (Panel) - begin -->
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-<div>dummy header</div>
+
+<l:ajax>
+	<link rel="stylesheet" type="text/css" href="${resURL}/plugin/system-message/css/systemmessage.css" media="screen" />
+	<script type="text/javascript">
+	function hideDiv(id) {
+		document.getElementById(id).style.display = 'none';
+	}
+	</script>
+</l:ajax>
+
 </j:jelly>
 <!-- Header file for the System Message (Panel) - end -->
