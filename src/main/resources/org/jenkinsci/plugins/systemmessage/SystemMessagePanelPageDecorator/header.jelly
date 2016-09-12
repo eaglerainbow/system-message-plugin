@@ -1,0 +1,5 @@
+<!-- Header file for the System Message (Panel) - begin -->
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+<div>dummy header</div>
+</j:jelly>
+<!-- Header file for the System Message (Panel) - end -->
