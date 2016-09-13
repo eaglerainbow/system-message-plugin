@@ -14,6 +14,7 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	
 	private String headingText;
 	private MessageTextStrategy messageTextStrategy;
+	private String plainMessageText;
 	
 	/* transient attributes */
 	// none
@@ -27,10 +28,12 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	@DataBoundConstructor
 	public SystemMessagePanelPageDecorator(String headingText, 
-			MessageTextStrategy messageTextStrategy) {
-		super();
+			MessageTextStrategy messageTextStrategy,
+			String plainMessageText) {
+		this();
 		this.headingText = headingText;
 		this.messageTextStrategy = messageTextStrategy;
+		this.setPlainMessageText(plainMessageText);
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		
 		return b;
 	}
-
+	
 	/* Getter / Setter methods */
 	public String getHeadingText() {
 		return headingText;
@@ -71,6 +74,14 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	public void setMessageTextStrategy(MessageTextStrategy messageTextStrategy) {
 		this.messageTextStrategy = messageTextStrategy;
+	}
+
+	public String getPlainMessageText() {
+		return plainMessageText;
+	}
+
+	public void setPlainMessageText(String plainMessageText) {
+		this.plainMessageText = plainMessageText;
 	}
 	
 	

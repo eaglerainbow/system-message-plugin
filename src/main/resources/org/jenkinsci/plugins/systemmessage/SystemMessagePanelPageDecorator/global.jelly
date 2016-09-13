@@ -20,5 +20,9 @@
     <f:entry title="${%Message Text Strategy}" field="messageTextStrategy">
     	<f:enum>${it.description}</f:enum>
     </f:entry>
+    
+    <f:entry title="${%Message Text}" field="plainMessageText">
+    	<f:textarea />
+    </f:entry>
   </f:section>
 </j:jelly>
