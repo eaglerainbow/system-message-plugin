@@ -1,7 +1,7 @@
 <!-- Footer file for the System Message (Panel) - begin -->
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 <div id="systemmessagepanel">
-	  <p align="center" id="heading">Lorem Ipsum!</p>
+	  <p align="center" id="heading">${it.headingText}</p>
 	  <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 	  <div id="hidelink"><a href="javascript:hideDiv('systemmessagepanel')">Hide</a></div>
 </div>

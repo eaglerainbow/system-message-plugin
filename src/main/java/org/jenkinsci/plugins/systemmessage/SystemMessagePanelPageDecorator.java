@@ -9,7 +9,7 @@ import hudson.model.PageDecorator;
 public class SystemMessagePanelPageDecorator extends PageDecorator {
 	/* persisted attributes */
 	
-	private String captionText;
+	private String headingText;
 
 	
 	/* transient attributes */
@@ -23,9 +23,9 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	}
 
 	@DataBoundConstructor
-	public SystemMessagePanelPageDecorator(String captionText) {
+	public SystemMessagePanelPageDecorator(String headingText) {
 		super();
-		this.captionText = captionText;
+		this.headingText = headingText;
 	}
 
 	@Override
@@ -36,5 +36,13 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	/* decoration takes places via the header.jelly/footer.jelly files 
 	 * in the resource folder
 	 */
+
+	public String getHeadingText() {
+		return headingText;
+	}
+
+	public void setHeadingText(String headingText) {
+		this.headingText = headingText;
+	}
 	
 }
