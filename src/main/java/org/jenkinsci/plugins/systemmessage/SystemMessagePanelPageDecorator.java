@@ -1,11 +1,11 @@
 package org.jenkinsci.plugins.systemmessage;
 
+import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategy;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 import hudson.Extension;
 import hudson.model.PageDecorator;
-import hudson.model.Descriptor.FormException;
 import net.sf.json.JSONObject;
 
 @Extension
@@ -13,7 +13,7 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	/* persisted attributes */
 	
 	private String headingText;
-
+	private MessageTextStrategy messageTextStrategy;
 	
 	/* transient attributes */
 	// none
@@ -26,9 +26,11 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	}
 
 	@DataBoundConstructor
-	public SystemMessagePanelPageDecorator(String headingText) {
+	public SystemMessagePanelPageDecorator(String headingText, 
+			MessageTextStrategy messageTextStrategy) {
 		super();
 		this.headingText = headingText;
+		this.messageTextStrategy = messageTextStrategy;
 	}
 
 	@Override
@@ -54,12 +56,21 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		return b;
 	}
 
+	/* Getter / Setter methods */
 	public String getHeadingText() {
 		return headingText;
 	}
 
 	public void setHeadingText(String headingText) {
 		this.headingText = headingText;
+	}
+
+	public MessageTextStrategy getMessageTextStrategy() {
+		return messageTextStrategy;
+	}
+
+	public void setMessageTextStrategy(MessageTextStrategy messageTextStrategy) {
+		this.messageTextStrategy = messageTextStrategy;
 	}
 	
 	
