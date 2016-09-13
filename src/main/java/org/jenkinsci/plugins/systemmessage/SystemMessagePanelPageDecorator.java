@@ -59,6 +59,17 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		return b;
 	}
 	
+	public boolean getMessagePanelVisible() {
+		if (this.headingText != null && this.plainMessageText != null)
+			return true;
+		
+		return false;
+	}
+	
+	public String getMessageText() {
+		return this.plainMessageText;
+	}
+	
 	/* Getter / Setter methods */
 	public String getHeadingText() {
 		return headingText;
