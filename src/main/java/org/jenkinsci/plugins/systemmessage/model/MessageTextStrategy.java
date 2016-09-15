@@ -1,26 +1,44 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import hudson.model.Describable;
+import hudson.model.Descriptor;
+import jenkins.model.*;
+
 /**
  * defines how the text in the system message panel shall be stored/rendered
  * @author eaglerainbow
  *
  */
-public enum MessageTextStrategy {
-	PLAIN_TEXT(Messages.MessageTextStrategy_PLAIN_TEXT()),
-	MESSAGE_TEXT_TABLE(Messages.MessageTextStrategy_MESSAGE_TEXT_TABLE());
+public abstract class MessageTextStrategy 
+	implements Describable<MessageTextStrategy> {
 	
-	private final String description;
-	
-	private MessageTextStrategy(String description) {
-		this.description = description;
+	@Override
+    @SuppressWarnings("unchecked")	
+	public Descriptor<MessageTextStrategy> getDescriptor() {
+		return (Descriptor<MessageTextStrategy>) Jenkins.getInstance().getDescriptorOrDie(getClass());
+	}
+
+	/**
+	 * the rendered/parsed representation of the message text that shall be shown
+	 * to the user.
+	 * 
+	 * May contain generated HTML code.
+	 * @return the text which shall be sent to the browser.
+	 */
+	public String getMessageText() {
+		return null;
 	}
 	
 	/**
-	 * returns the human-readable description of this strategy (i18n-enabled)
-	 * @return the human-readable description as string
+	 * boolean indicating whether there is a message text which shall be shown 
+	 * to the user and if the configuration is consistent.
+	 * Note that if <code>true</code> is returned, <code>getMessageText()</code> 
+	 * also must be able to provide the generated text).  
+	 * @return <code>true</code> if the system message panel will be able 
+	 * to show the message text. <code>False</code> otherwise.
 	 */
-	public String getDescription() {
-		return this.description;
+	public boolean isDisplayable() {
+		return false;
 	}
-	
+
 }

@@ -1,11 +1,14 @@
 package org.jenkinsci.plugins.systemmessage;
 
 import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategy;
+import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategyDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
+import hudson.DescriptorExtensionList;
 import hudson.Extension;
 import hudson.model.PageDecorator;
+import jenkins.model.*;
 import net.sf.json.JSONObject;
 
 @Extension
@@ -14,7 +17,6 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	
 	private String headingText;
 	private MessageTextStrategy messageTextStrategy;
-	private String plainMessageText;
 	
 	/* transient attributes */
 	// none
@@ -28,12 +30,11 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	@DataBoundConstructor
 	public SystemMessagePanelPageDecorator(String headingText, 
-			MessageTextStrategy messageTextStrategy,
-			String plainMessageText) {
+			MessageTextStrategy messageTextStrategy) {
 		this();
 		this.headingText = headingText;
 		this.messageTextStrategy = messageTextStrategy;
-		this.setPlainMessageText(plainMessageText);
+
 	}
 
 	@Override
@@ -51,6 +52,9 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
 		boolean b = super.configure(req, json);
 		
+		Jenkins j = Jenkins.getInstance();
+		DescriptorExtensionList<MessageTextStrategy, MessageTextStrategyDescriptor> l = j.getDescriptorList(MessageTextStrategy.class);
+			
 		req.bindJSON(this, json);
 		
 		this.save();
@@ -60,14 +64,17 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	}
 	
 	public boolean getMessagePanelVisible() {
-		if (this.headingText != null && this.plainMessageText != null)
-			return true;
+		if (this.messageTextStrategy == null)
+			return false;
 		
-		return false;
+		return this.messageTextStrategy.isDisplayable();
 	}
 	
 	public String getMessageText() {
-		return this.plainMessageText;
+		if (this.messageTextStrategy == null)
+			return "";
+					
+		return this.messageTextStrategy.getMessageText();
 	}
 	
 	/* Getter / Setter methods */
@@ -85,15 +92,6 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	public void setMessageTextStrategy(MessageTextStrategy messageTextStrategy) {
 		this.messageTextStrategy = messageTextStrategy;
-	}
-
-	public String getPlainMessageText() {
-		return plainMessageText;
-	}
-
-	public void setPlainMessageText(String plainMessageText) {
-		this.plainMessageText = plainMessageText;
-	}
-	
+	}	
 	
 }
