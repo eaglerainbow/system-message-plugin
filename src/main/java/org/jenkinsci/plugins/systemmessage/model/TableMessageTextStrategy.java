@@ -19,7 +19,7 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		return false;
 	}
 
-	@Extension
+	@Extension(ordinal = 10)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		@Override
 		public String getDisplayName() {
