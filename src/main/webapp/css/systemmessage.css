@@ -19,6 +19,10 @@
   
 #systemmessagepanel p {
 	margin-top: 1px; 
+	
+	/* the div is part of the footer tag, which be default gets a text-align: right inherited
+	We reset this value here back to prevent that everything is right-aligned */
+	text-align: initial; 
 }
   
 #heading {
