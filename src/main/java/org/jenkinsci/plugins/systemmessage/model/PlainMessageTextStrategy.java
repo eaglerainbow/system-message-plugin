@@ -40,7 +40,7 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		return true;
 	}
 
-	@Extension(ordinal = 1)
+	@Extension(ordinal = 9999)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		
 		@Override

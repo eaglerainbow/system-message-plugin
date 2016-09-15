@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import org.kohsuke.stapler.DataBoundConstructor;
+
 import hudson.Extension;
 
 /**
@@ -9,6 +11,12 @@ import hudson.Extension;
  *
  */
 public class TableMessageTextStrategy extends MessageTextStrategy {
+	
+	@DataBoundConstructor
+	public TableMessageTextStrategy() {
+		
+	}
+	
 	@Override
 	public String getMessageText() {
 		throw new Error("Not implemented yet");
@@ -19,7 +27,7 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		return false;
 	}
 
-	@Extension(ordinal = 10)
+	@Extension(ordinal = 5000)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		@Override
 		public String getDisplayName() {
