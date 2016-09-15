@@ -52,9 +52,6 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
 		boolean b = super.configure(req, json);
 		
-		Jenkins j = Jenkins.getInstance();
-		DescriptorExtensionList<MessageTextStrategy, MessageTextStrategyDescriptor> l = j.getDescriptorList(MessageTextStrategy.class);
-			
 		req.bindJSON(this, json);
 		
 		this.save();
