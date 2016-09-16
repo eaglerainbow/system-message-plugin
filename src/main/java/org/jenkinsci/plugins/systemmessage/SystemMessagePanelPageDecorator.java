@@ -2,14 +2,11 @@ package org.jenkinsci.plugins.systemmessage;
 
 import org.jenkinsci.plugins.systemmessage.model.MessageLevel;
 import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategy;
-import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategyDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
-import hudson.DescriptorExtensionList;
 import hudson.Extension;
 import hudson.model.PageDecorator;
-import jenkins.model.*;
 import net.sf.json.JSONObject;
 
 @Extension
