@@ -50,6 +50,13 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		return true;
 	}
 
+	@Override
+	public MessageLevel getPanelMessageLevel() {
+		// as we only have one single message with one level,
+		// the message level of the panel equals to the level
+		// of the single message => trivial
+		return this.getLevel();
+	}
 
 	@Extension(ordinal = 9999)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
@@ -61,5 +68,6 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 
 
 	}
+
 	
 }

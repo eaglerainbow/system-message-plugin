@@ -2,14 +2,8 @@
     position: fixed;
     bottom: 30px;
     right: 15px;
-	border-style: dashed;
-	border-width: 4px;
-	border-color: red;
-	border-radius: 15px;
-	background-color: #ff6666;
 	padding: 5px 15px 15px 15px;
 	width: 38.2%;
-	color: white;
 	opacity: 0.5;
 }
  
@@ -35,4 +29,40 @@
 
 #systemmessagepanel:hover {
 	opacity: 1.0;
+}
+
+.org-jenkinsci-plugins-systemmessage-fatal {
+	border-style: dashed;
+	border-width: 4px;
+	border-color: red;
+	border-radius: 15px;
+	background-color: #ff6666;  /* red-ish */
+}
+
+.org-jenkinsci-plugins-systemmessage-fatal p {
+	color: white;	
+}
+
+.org-jenkinsci-plugins-systemmessage-warning {
+	border-style: dashed;
+	border-width: 4px;
+	border-color: yellow;
+	border-radius: 15px;
+	background-color: #ffff4d; /* light yellow */
+}
+
+.org-jenkinsci-plugins-systemmessage-warning p {
+	color: black;	
+}
+
+.org-jenkinsci-plugins-systemmessage-information {
+	border-style: dashed;
+	border-width: 4px;
+	border-color: #1a1aff; /* light blue */
+	border-radius: 15px;
+	background-color: white;
+}
+
+.org-jenkinsci-plugins-systemmessage-information p {
+	color: black;	
 }

@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.systemmessage;
 
+import org.jenkinsci.plugins.systemmessage.model.MessageLevel;
 import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategy;
 import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategyDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -76,6 +77,14 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 			return false;
 		
 		return this.messageTextStrategy.isDisplayable();
+	}
+	
+	public String getPanelMessageLevelCSSClass() {
+		if (this.messageTextStrategy == null)
+			return "";
+		
+		MessageLevel ml = this.messageTextStrategy.getPanelMessageLevel();
+		return ml.getCSSClass();
 	}
 	
 	public String getMessageText() {

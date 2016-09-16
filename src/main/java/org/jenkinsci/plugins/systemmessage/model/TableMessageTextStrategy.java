@@ -27,6 +27,11 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		return false;
 	}
 
+	@Override
+	public MessageLevel getPanelMessageLevel() {
+		throw new Error("Not implemented yet");
+	}
+
 	@Extension(ordinal = 5000)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		@Override

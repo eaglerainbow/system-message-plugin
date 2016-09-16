@@ -1,7 +1,7 @@
 <!-- Footer file for the System Message (Panel) - begin -->
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 <j:if test="${it.messagePanelVisible}">
-	<div id="systemmessagepanel">
+	<div id="systemmessagepanel" class="${it.panelMessageLevelCSSClass}">
 		  <p align="center" id="heading">${it.headingText}</p>
 		  <p>${it.messageText}</p>
 		  <div id="hidelink"><a href="javascript:hideDiv('systemmessagepanel')">Hide</a></div>

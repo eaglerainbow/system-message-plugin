@@ -32,4 +32,10 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 		return false;
 	}
 
+	/**
+	 * providesthe message level in which the system message shall be rendered (and thus its theming)
+	 * @return the <code>MessageLevel</code> of the panel itself
+	 */
+	public abstract MessageLevel getPanelMessageLevel();
+
 }
