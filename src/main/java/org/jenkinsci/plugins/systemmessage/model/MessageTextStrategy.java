@@ -1,23 +1,14 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
-import hudson.model.Describable;
-import hudson.model.Descriptor;
-import jenkins.model.*;
+import hudson.model.AbstractDescribableImpl;
 
 /**
  * defines how the text in the system message panel shall be stored/rendered
  * @author eaglerainbow
  *
  */
-public abstract class MessageTextStrategy 
-	implements Describable<MessageTextStrategy> {
+public abstract class MessageTextStrategy extends AbstractDescribableImpl<MessageTextStrategy> {
 	
-	@Override
-    @SuppressWarnings("unchecked")	
-	public Descriptor<MessageTextStrategy> getDescriptor() {
-		return (Descriptor<MessageTextStrategy>) Jenkins.getInstance().getDescriptorOrDie(getClass());
-	}
-
 	/**
 	 * the rendered/parsed representation of the message text that shall be shown
 	 * to the user.
