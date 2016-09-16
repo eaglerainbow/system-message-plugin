@@ -14,8 +14,14 @@ import net.sf.json.JSONObject;
 @Extension
 public class SystemMessagePanelPageDecorator extends PageDecorator {
 	/* persisted attributes */
+
+	/** main switch of the message panel */
+	private boolean enabled;
 	
+	/** the heading of the system message panel */
 	private String headingText;
+	
+	/** the approach how the body of the system message panel shall be rendered */
 	private MessageTextStrategy messageTextStrategy;
 	
 	/* transient attributes */
@@ -30,8 +36,10 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	@DataBoundConstructor
 	public SystemMessagePanelPageDecorator(String headingText, 
-			MessageTextStrategy messageTextStrategy) {
+			MessageTextStrategy messageTextStrategy, 
+			boolean enabled) {
 		this();
+		this.enabled = enabled;
 		this.headingText = headingText;
 		this.messageTextStrategy = messageTextStrategy;
 
@@ -61,6 +69,9 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	}
 	
 	public boolean getMessagePanelVisible() {
+		if (!this.getEnabled())
+			return false;
+		
 		if (this.messageTextStrategy == null)
 			return false;
 		
@@ -68,6 +79,9 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	}
 	
 	public String getMessageText() {
+		if (!this.getEnabled())
+			return "";
+		
 		if (this.messageTextStrategy == null)
 			return "";
 					
@@ -89,6 +103,14 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 
 	public void setMessageTextStrategy(MessageTextStrategy messageTextStrategy) {
 		this.messageTextStrategy = messageTextStrategy;
+	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}	
 	
 }

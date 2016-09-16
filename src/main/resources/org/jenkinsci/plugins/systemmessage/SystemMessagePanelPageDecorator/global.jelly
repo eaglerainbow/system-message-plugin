@@ -13,6 +13,10 @@
     so it should be straightforward to find them.
   -->
   <f:section title="${%System Message Configuration}">
+  	<f:entry title="${%Show System Message Panel}" field="enabled">
+  	  <f:checkbox default="true" />
+  	</f:entry>
+  
     <f:entry title="${%Heading}" field="headingText">
       <f:textbox default="${%System Messages}" />
     </f:entry>
