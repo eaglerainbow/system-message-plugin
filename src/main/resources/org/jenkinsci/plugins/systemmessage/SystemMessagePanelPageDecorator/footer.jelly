@@ -4,7 +4,7 @@
 	<div id="systemmessagepanel" class="${it.panelMessageLevelCSSClass}">
 		  <p align="center" id="heading">${it.headingText}</p>
 		  <p>${it.messageText}</p>
-		  <div id="hidelink"><a href="javascript:org_jenkinsci_plugins_systemmessage_hidePanel('systemmessagepanel')"><img src="${resURL}/plugin/system-message/images/whitexonred_small.png" alt="Hide" /></a></div>
+		  <div id="hidelink"><a href="javascript:org_jenkinsci_plugins_systemmessage_hidePanel('systemmessagepanel')"><img src="${resURL}/plugin/system-message/images/whitexonred_small.png" alt="${%Hide}" /></a></div>
 	</div>
 </j:if>
 </j:jelly>
