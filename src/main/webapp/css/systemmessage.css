@@ -12,26 +12,27 @@
 	color: white;
 	opacity: 0.5;
 }
-  
-#systemmessagepanel:hover {
-	opacity: 1.0;
+ 
+#systemmessagepanel #heading {
+	font-size: 1.6em;
+	text-decoration: underline;
+	text-align: center;
 }
-  
+    
 #systemmessagepanel p {
 	margin-top: 1px; 
 	
 	/* the div is part of the footer tag, which be default gets a text-align: right inherited
 	We reset this value here back to prevent that everything is right-aligned */
 	text-align: initial; 
-}
-  
-#heading {
-	font-size: 1.6em;
-	text-decoration: underline;
-}
+}  
   
 #systemmessagepanel #hidelink {
 	position: absolute;
 	right: 8px;
 	top: 5px;
+}
+
+#systemmessagepanel:hover {
+	opacity: 1.0;
 }
