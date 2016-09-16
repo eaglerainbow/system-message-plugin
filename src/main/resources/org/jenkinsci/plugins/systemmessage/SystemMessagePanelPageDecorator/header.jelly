@@ -3,11 +3,7 @@
 
 <l:ajax>
 	<link rel="stylesheet" type="text/css" href="${resURL}/plugin/system-message/css/systemmessage.css" media="screen" />
-	<script type="text/javascript">
-	function hideDiv(id) {
-		document.getElementById(id).style.display = 'none';
-	}
-	</script>
+	<script type="text/javascript" src="${resURL}/plugin/system-message/js/systemmessage_functions.js"></script>
 </l:ajax>
 
 </j:jelly>
