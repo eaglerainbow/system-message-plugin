@@ -58,7 +58,22 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 	public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
 		boolean b = super.configure(req, json);
 		
+		// store before-image
+		MessageTextStrategy mtsBeforeImage = this.messageTextStrategy;
+
+		// update the values based on the new parameters
 		req.bindJSON(this, json);
+		
+		// note that this.messageTextStrategy now always points to a new instance
+		// even if the values may be the same as the old instance.
+		
+		if (!mtsBeforeImage.equals(this.messageTextStrategy)) {
+			// this wasn't just a change of the instance, but there was some 
+			// change of a configuration value as well
+			// we need to inform the instances about that, such that they
+			// may create new messageUids (if applicable)
+			this.messageTextStrategy.updateOnConfigurationChange(mtsBeforeImage);
+		}
 		
 		this.save();
 		SystemMessagePanelManager.getInstance().reloadAll();

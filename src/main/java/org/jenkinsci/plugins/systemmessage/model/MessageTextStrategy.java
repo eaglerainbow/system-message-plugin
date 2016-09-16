@@ -38,4 +38,15 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 	 */
 	public abstract MessageLevel getPanelMessageLevel();
 
+	/**
+	 * called by the framework in case a configuration change has occurred.
+	 * 
+	 * Note that before this method is called, the <code>equals</code> method is called
+	 * on the instances before and after the configuration changes. Therefore, the
+	 * descendant of this class needs to properly implement <code>equals</code> properly -
+	 * and that even for the case where the comparing instance is not of the same type! 
+	 * @param mtsBefore the instance with the values before the configuration change had happened
+	 */
+	public abstract void updateOnConfigurationChange(MessageTextStrategy mtsBefore);
+	
 }
