@@ -6,10 +6,12 @@ import hudson.Extension;
 
 public class PlainMessageTextStrategy extends MessageTextStrategy {
 	private String plainMessageText;
+	private MessageLevel level;
 
 	@DataBoundConstructor
-	public PlainMessageTextStrategy(String plainMessageText) {
+	public PlainMessageTextStrategy(String plainMessageText, MessageLevel level) {
 		this.plainMessageText = plainMessageText;
+		this.level = level;
 	}
 	
 	public String getPlainMessageText() {
@@ -18,6 +20,14 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 
 	public void setPlainMessageText(String plainMessageText) {
 		this.plainMessageText = plainMessageText;
+	}
+
+	public MessageLevel getLevel() {
+		return level;
+	}
+
+	public void setLevel(MessageLevel level) {
+		this.level = level;
 	}
 	
 	@Override
@@ -39,6 +49,7 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		
 		return true;
 	}
+
 
 	@Extension(ordinal = 9999)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
