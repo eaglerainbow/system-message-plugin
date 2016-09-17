@@ -28,7 +28,8 @@ He is only able to read message, as he does not have the "administer" privilege 
 - [ ] System messages have an expiry date. After having reached that date, the system message is automatically removed from the configuration.
 - [x] The "hide" link is replaced with a proper button / clickable symbol.
 - [ ] Multi-Language support (system messages may need to appear in different languages, depending on the language the user has logged on) -- prio low, as in many cases administrators do not have enough time to ensure proper translation.
-- [ ] Once users have read a corresponding message, users may mark them as having read them. The message then is not shown anymore.
+- [x] Once users have read a corresponding message, users may mark them as having read them. The message then is not shown anymore.
+- [ ] Once the user has read a single message (out of multiple one's which are shown) and marks them as having it read, the message is no longer shown.
 - [ ] Users are able to review the list of current messages (in read-only mode), even after they have marked them as read by a menu option from the main menu upon request. Reading it again is not enforced.  
 - [ ] Messages may be extended with link such that additional details on a message can be provided. The hyperlink may refer to an external resource (generic HTTP URL).
 - [ ] JUnit tests 

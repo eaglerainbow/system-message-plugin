@@ -4,17 +4,22 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import org.jenkinsci.plugins.systemmessage.user.UserReadSystemMessagesUserProperty;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 import hudson.Extension;
 import net.sf.json.JSONObject;
 
+import java.util.logging.Logger;
+
 public class PlainMessageTextStrategy extends MessageTextStrategy {
 	private String plainMessageText;
 	private MessageLevel level;
 	private UUID messageUid;
 
+	private static final transient Logger LOGGER = Logger.getLogger(PlainMessageTextStrategy.class.toString());
+	
 	@DataBoundConstructor
 	public PlainMessageTextStrategy(String plainMessageText, 
 			MessageLevel level, 
@@ -68,7 +73,21 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 			return false;
 		}
 		
-		return true;
+		// check that the user has not read the message(s) yet
+		boolean isRead = this.isMessageRead();
+		if (isRead) {
+			LOGGER.finer(String.format("Not showing system message panel, as message %s already is marked as read", this.messageUid.toString()));
+		}
+		return !isRead;
+	}
+
+	private boolean isMessageRead() {
+		UserReadSystemMessagesUserProperty ursmur = UserReadSystemMessagesUserProperty.getInstanceOfCurrentUser();
+		if (ursmur == null) {
+			return false;
+		}
+		
+		return ursmur.isMessageRead(this.messageUid.toString());
 	}
 
 	@Override
