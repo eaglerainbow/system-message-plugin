@@ -20,6 +20,7 @@ import org.kohsuke.stapler.StaplerResponse;
 
 import hudson.Plugin;
 import hudson.model.*;
+import hudson.util.FormValidation;
 
 
 public class SystemMessagePlugin extends Plugin {
@@ -67,7 +68,13 @@ public class SystemMessagePlugin extends Plugin {
 			ursmup.markMessageRead(muid);
 		}
 		
-		// TODO Saving still required!
+		try {
+			User.current().save();
+		} catch (FormValidation e) {
+			LOGGER.info("Form Validation exceptiopn on saving configuration changes of current user; ignoring");
+		} catch (IOException e) {
+			LOGGER.info("Unable to save configuration changes of current user; ignoring");
+		}
 	}
 	
 }
