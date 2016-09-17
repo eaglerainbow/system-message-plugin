@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import java.util.Set;
+
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.Extension;
@@ -37,6 +39,15 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		throw new Error("Not implemented yet");
 	}
 	
+	
+	
+	@Override
+	public Set<String> getMessageUidsOnHideButton() {
+		throw new Error("Not implemented yet");
+	}
+
+
+
 	@Extension(ordinal = 5000)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		@Override

@@ -1,16 +1,20 @@
 package org.jenkinsci.plugins.systemmessage;
 
+import java.util.Set;
+
 import org.jenkinsci.plugins.systemmessage.model.MessageLevel;
 import org.jenkinsci.plugins.systemmessage.model.MessageTextStrategy;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 import hudson.Extension;
-import hudson.model.PageDecorator;
+import hudson.model.*;
 import net.sf.json.JSONObject;
 
 @Extension
 public class SystemMessagePanelPageDecorator extends PageDecorator {
+	public static final char MESSAGEUID_SEPARATOR = ','; 
+	
 	/* persisted attributes */
 
 	/** main switch of the message panel */
@@ -109,6 +113,59 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		return this.messageTextStrategy.getMessageText();
 	}
 	
+	/**
+	 * states, if a user has logged on (and thus we don't have the anonymous user)
+	 * and thus also if security is enabled in Jenkins at all
+	 * @return <code>true</code> if a user had logged on and security is (thus) enabled,
+	 * or <code>false</code> otherwise
+	 */
+	public boolean isUserLoggedOn() {
+		return User.current() != null;
+	}
+	
+	public String getMessageUidsOnHideButton() {
+		if (this.messageTextStrategy == null)
+			return "";
+		
+		if (!isUserLoggedOn()) {
+			/* if there is no user logged on, we also cannot 
+			 * mark the MessageUids as read.
+			 * The most simple solution then to prevent the AJAX
+			 * call to the marking algorithm is to not send any 
+			 * MessageUids at all 
+			 */
+			return "";
+		}
+		
+		Set<String> msguids = this.messageTextStrategy.getMessageUidsOnHideButton();
+		if (msguids == null)
+			return "";
+		
+		if (msguids.isEmpty())
+			return "";
+	
+		this.checkForMessageUidSeparator(msguids);
+		
+		String msguids_string = org.apache.commons.lang.StringUtils.join(msguids, ',');
+		return msguids_string;
+	}
+	
+	/** safety check: we will use comma as separator
+	 * That is why we need to verify that that character isn't used
+	 * in the strings
+	 */
+	private void checkForMessageUidSeparator(Set<String> msguids) {
+		for (String s : msguids) {
+			if (s == null)
+				throw new NullPointerException("Invalid message uid in hide-button list");
+			
+			if (s.indexOf(MESSAGEUID_SEPARATOR) != -1) {
+				throw new Error("Message UID contains separator char; this would break the plugin");
+			}
+		}
+
+	}
+
 	/* Getter / Setter methods */
 	public String getHeadingText() {
 		return headingText;

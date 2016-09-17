@@ -1,5 +1,8 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import hudson.model.AbstractDescribableImpl;
 
 /**
@@ -33,7 +36,7 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 	}
 
 	/**
-	 * providesthe message level in which the system message shall be rendered (and thus its theming)
+	 * provides the message level in which the system message shall be rendered (and thus its theming)
 	 * @return the <code>MessageLevel</code> of the panel itself
 	 */
 	public abstract MessageLevel getPanelMessageLevel();
@@ -49,4 +52,12 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 	 */
 	public abstract void updateOnConfigurationChange(MessageTextStrategy mtsBefore);
 	
+	/**
+	 * returns the message unique ids, which shall be marked as read for the user, 
+	 * in case the "hide" button of the message panel has be clicked. 
+	 * @return a set of message unique ids which will be marked as read.
+	 */
+	public Set<String> getMessageUidsOnHideButton() {
+		return new HashSet<String>();
+	}
 }

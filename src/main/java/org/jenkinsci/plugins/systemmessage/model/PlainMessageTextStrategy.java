@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -104,6 +106,16 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		
 		return true;
 	}
+	
+	@Override
+	public Set<String> getMessageUidsOnHideButton() {
+		HashSet<String> myMessageUid = new HashSet<String>();
+		myMessageUid.add(this.messageUid.toString());
+		
+		return myMessageUid;
+	}
+
+
 
 	@Extension(ordinal = 9999)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
