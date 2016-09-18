@@ -17,6 +17,7 @@ import hudson.model.UserPropertyDescriptor;
  * @author eaglerainbow
  */
 public class UserReadSystemMessagesUserProperty extends UserProperty {
+	
 	public final static transient Set<String> EMPTY_MESSAGE_SET = new HashSet<String>();
 	
 	private HashSet<String> readMessages;
@@ -24,6 +25,17 @@ public class UserReadSystemMessagesUserProperty extends UserProperty {
 	@DataBoundConstructor
 	public UserReadSystemMessagesUserProperty(Set<String> readMessages) {
 		this.readMessages = new HashSet<String>(readMessages);
+	}
+
+	public UserReadSystemMessagesUserProperty(User u) {
+		this(EMPTY_MESSAGE_SET);
+		
+		this.user = u;
+	}
+
+	@Override
+	public UserPropertyDescriptor getDescriptor() {
+		return new UserReadSystemMessagesUserPropertyDescriptor();
 	}
 	
 	/**
@@ -61,26 +73,6 @@ public class UserReadSystemMessagesUserProperty extends UserProperty {
 	 */
 	public void cleanupMessageRead(String messageUid) {
 		this.readMessages.remove(messageUid);
-	}
-	
-	@Extension
-	public static class DescriptorImpl extends UserPropertyDescriptor {
-
-		@Override
-		public UserProperty newInstance(User user) {
-			UserReadSystemMessagesUserProperty usrsmup = new UserReadSystemMessagesUserProperty(
-					EMPTY_MESSAGE_SET
-				);
-			usrsmup.user = user;
-			
-			return usrsmup;
-		}
-
-		@Override
-		public String getDisplayName() {
-			return "User Property storing already read System Messages of a user";
-		}
-		
 	}
 	
 	/**

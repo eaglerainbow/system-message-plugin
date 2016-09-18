@@ -16,6 +16,10 @@ import org.jvnet.hudson.test.recipes.LocalData;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+import hudson.model.Descriptor;
+import hudson.model.UserProperty;
+import hudson.model.UserPropertyDescriptor;
+
 public class UserReadSystemMessagesUserPropertyTest {
 
 	public final static transient UUID TESTUUID = UUID.randomUUID();
@@ -88,7 +92,7 @@ public class UserReadSystemMessagesUserPropertyTest {
 		Set<String> msgs = ursmup.getReadMessages();
 		Assert.assertEquals("Check that after cleanup no message is marked by default", 0, msgs.size());
 	}
-	
+		
 	@Test
 	@LocalData
 	public void testUserConfigurationExceptionFree() throws Exception {
