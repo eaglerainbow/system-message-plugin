@@ -1,7 +1,6 @@
 package org.jenkinsci.plugins.systemmessage.user;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +32,7 @@ public class UserReadSystemMessagesUserProperty extends UserProperty {
 	 * @return the set of unique id of messages the user has marked as read before
 	 */
 	public Set<String> getReadMessages() {
-		return Collections.unmodifiableSet(readMessages);
+		return readMessages;
 	}
 
 	/**
@@ -62,6 +61,26 @@ public class UserReadSystemMessagesUserProperty extends UserProperty {
 	 */
 	public void cleanupMessageRead(String messageUid) {
 		this.readMessages.remove(messageUid);
+	}
+	
+	@Extension
+	public static class DescriptorImpl extends UserPropertyDescriptor {
+
+		@Override
+		public UserProperty newInstance(User user) {
+			UserReadSystemMessagesUserProperty usrsmup = new UserReadSystemMessagesUserProperty(
+					EMPTY_MESSAGE_SET
+				);
+			usrsmup.user = user;
+			
+			return usrsmup;
+		}
+
+		@Override
+		public String getDisplayName() {
+			return "User Property storing already read System Messages of a user";
+		}
+		
 	}
 	
 	/**
