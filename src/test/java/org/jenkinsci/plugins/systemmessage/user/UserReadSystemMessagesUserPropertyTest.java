@@ -13,10 +13,8 @@ import org.jvnet.hudson.test.JenkinsRule;
 import org.jvnet.hudson.test.WithoutJenkins;
 import org.jvnet.hudson.test.recipes.LocalData;
 
-import hudson.ExtensionList;
-import hudson.model.Descriptor;
-import hudson.model.UserProperty;
-import hudson.model.UserPropertyDescriptor;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class UserReadSystemMessagesUserPropertyTest {
 
@@ -89,5 +87,14 @@ public class UserReadSystemMessagesUserPropertyTest {
 		
 		Set<String> msgs = ursmup.getReadMessages();
 		Assert.assertEquals("Check that after cleanup no message is marked by default", 0, msgs.size());
+	}
+	
+	@Test
+	@LocalData
+	public void testUserConfigurationExceptionFree() throws Exception {
+		HtmlPage page = j.createWebClient().goTo("user/tester/configure");
+		HtmlElement body = page.getBody();
+		String bodyString = body.toString();
+		Assert.assertFalse("Exception shall not be mentioned in the body", bodyString.contains("Exception"));
 	}
 }

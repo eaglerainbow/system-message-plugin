@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.systemmessage.SystemMessagePanelPageDecorator plugin="system-message@1.0.0-SNAPSHOT">
+  <enabled>true</enabled>
+  <headingText>System Messages customy</headingText>
+  <messageTextStrategy class="org.jenkinsci.plugins.systemmessage.model.PlainMessageTextStrategy">
+    <plainMessageText>test</plainMessageText>
+    <level>WARNING</level>
+    <messageUid>6dfdd89f-9ddb-42cb-9889-641a6427b2e1</messageUid>
+  </messageTextStrategy>
+</org.jenkinsci.plugins.systemmessage.SystemMessagePanelPageDecorator>
