@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import org.acegisecurity.Authentication;
-import org.acegisecurity.context.SecurityContextHolder;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,9 +14,7 @@ import org.jvnet.hudson.test.recipes.LocalData;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-import hudson.model.Descriptor;
-import hudson.model.UserProperty;
-import hudson.model.UserPropertyDescriptor;
+import org.jenkinsci.plugins.systemmessage.util.UserUtils;
 
 public class UserReadSystemMessagesUserPropertyTest {
 
@@ -83,8 +79,7 @@ public class UserReadSystemMessagesUserPropertyTest {
 	@Test
 	@LocalData
 	public void testGetInstanceOfCurrentUser() throws Exception {
-		Authentication a = j.getInstance().getUser("tester").impersonate();
-		SecurityContextHolder.getContext().setAuthentication(a);
+		UserUtils.changeCurrentUser(this.j.getInstance(), "tester");
 		
 		UserReadSystemMessagesUserProperty ursmup = UserReadSystemMessagesUserProperty.getInstanceOfCurrentUser();
 		Assert.assertNotNull("Ensure that instance is returned", ursmup);
