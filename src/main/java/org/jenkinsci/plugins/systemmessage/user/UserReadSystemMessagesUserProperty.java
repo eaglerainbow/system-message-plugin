@@ -1,6 +1,7 @@
 package org.jenkinsci.plugins.systemmessage.user;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,6 @@ import hudson.Extension;
 import hudson.model.User;
 import hudson.model.UserProperty;
 import hudson.model.UserPropertyDescriptor;
-import jenkins.model.*;
 
 /**
  * (invisible) storage of the system messages which the user has already read
@@ -32,7 +32,7 @@ public class UserReadSystemMessagesUserProperty extends UserProperty {
 	 * @return the set of unique id of messages the user has marked as read before
 	 */
 	public Set<String> getReadMessages() {
-		return readMessages;
+		return Collections.unmodifiableSet(readMessages);
 	}
 
 	/**
