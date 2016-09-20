@@ -27,8 +27,18 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		this.plainMessageText = plainMessageText;
 		this.level = level;
 		if (messageUid != null) {
-			// same Uid on write
-			this.messageUid = UUID.fromString(messageUid);
+			if ("".equals(messageUid)) {
+				/* This case may happen, if the plugin was just installed freshly,
+				 * i.e. there also is no config file in place before.
+				 * Therefore, there is no UUID provided before.
+				 * On pressing the "save" button at /configure, we will 
+				 * get back a UUID with an empty string
+				 */
+				this.messageUid = UUID.randomUUID();
+			} else {
+				// same Uid on write
+				this.messageUid = UUID.fromString(messageUid);
+			}
 		} else {
 			// if no messageUid was provided, we need to generate a new one
 			// typical usecase: Strategy was not configured before and now is configured the first time
