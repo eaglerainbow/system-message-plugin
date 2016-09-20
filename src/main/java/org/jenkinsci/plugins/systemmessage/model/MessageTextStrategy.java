@@ -3,14 +3,17 @@ package org.jenkinsci.plugins.systemmessage.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import hudson.ExtensionPoint;
 import hudson.model.AbstractDescribableImpl;
+import hudson.model.Describable;
 
 /**
  * defines how the text in the system message panel shall be stored/rendered
  * @author eaglerainbow
  *
  */
-public abstract class MessageTextStrategy extends AbstractDescribableImpl<MessageTextStrategy> {
+public abstract class MessageTextStrategy<T extends MessageTextStrategy<T>> extends AbstractDescribableImpl<T>
+	implements Describable<T>, ExtensionPoint {
 	
 	/**
 	 * the rendered/parsed representation of the message text that shall be shown
@@ -48,7 +51,7 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 	 * and that even for the case where the comparing instance is not of the same type! 
 	 * @param mtsBefore the instance with the values before the configuration change had happened
 	 */
-	public abstract void updateOnConfigurationChange(MessageTextStrategy mtsBefore);
+	public abstract void updateOnConfigurationChange(MessageTextStrategy<?> mtsBefore);
 	
 	/**
 	 * returns the message unique ids, which shall be marked as read for the user, 

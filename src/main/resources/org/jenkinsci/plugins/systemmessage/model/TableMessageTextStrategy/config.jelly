@@ -1,6 +1,9 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	<f:entry>
-		This strategy is not available yet
+	<f:entry title="${%Messages}" description="${%List of messages which shall be shown in the message panel}">
+		<f:repeatableProperty field="messages" hasHeader="true"  add="${%Add Message}" />
+		<div align="right">
+            <f:repeatableDeleteButton />
+        </div>
 	</f:entry>
 </j:jelly>

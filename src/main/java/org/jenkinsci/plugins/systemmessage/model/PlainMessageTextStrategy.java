@@ -1,24 +1,31 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import org.jenkinsci.plugins.systemmessage.user.UserReadSystemMessagesUserProperty;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
 
+import com.infradna.tool.bridge_method_injector.WithBridgeMethods;
+
+import hudson.DescriptorExtensionList;
 import hudson.Extension;
-import net.sf.json.JSONObject;
+import jenkins.model.Jenkins;
 
-import java.util.logging.Logger;
-
-public class PlainMessageTextStrategy extends MessageTextStrategy {
+@Extension
+public class PlainMessageTextStrategy extends MessageTextStrategy<PlainMessageTextStrategy> {
 	private String plainMessageText;
 	private MessageLevel level;
 	private UUID messageUid;
 
 	private static final transient Logger LOGGER = Logger.getLogger(PlainMessageTextStrategy.class.toString());
+	
+	public PlainMessageTextStrategy() {
+		throw new Error("Shall never be used");
+	}
 	
 	@DataBoundConstructor
 	public PlainMessageTextStrategy(String plainMessageText, 
@@ -104,7 +111,7 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 	}
 
 	@Override
-	public void updateOnConfigurationChange(MessageTextStrategy mtsBefore) {
+	public void updateOnConfigurationChange(MessageTextStrategy<?> mtsBefore) {
 		// draw a new UUID
 		this.messageUid = UUID.randomUUID();
 		/* NB: That holds true, even if mtsBefore is not of type PlainMessageTextStrategy
@@ -142,18 +149,18 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 
 
 	@Extension(ordinal = 9999)
-	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
+	public static class DescriptorImpl extends MessageTextStrategyDescriptor<PlainMessageTextStrategy> {
 		
 		@Override
 		public String getDisplayName() {
 			return Messages.MessageTextStrategy_PLAIN_TEXT();
 		}
+		
+	    @WithBridgeMethods(List.class)
+	    public static DescriptorExtensionList<PlainMessageTextStrategy,DescriptorImpl> all() {
+	        return Jenkins.getInstance().<PlainMessageTextStrategy,DescriptorImpl> getDescriptorList(PlainMessageTextStrategy.class);
+	    }
 
-		@Override
-		public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
-			// TODO Auto-generated method stub
-			return super.configure(req, json);
-		}
 	}
 
 }
