@@ -67,11 +67,6 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 	}
 	
 	@Override
-	public String getMessageText() {
-		return this.getPlainMessageText();
-	}
-
-	@Override
 	public boolean isDisplayable() {
 		String text = this.getPlainMessageText();
 		

@@ -20,11 +20,6 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 	}
 	
 	@Override
-	public String getMessageText() {
-		throw new Error("Not implemented yet");
-	}
-
-	@Override
 	public boolean isDisplayable() {
 		return false;
 	}

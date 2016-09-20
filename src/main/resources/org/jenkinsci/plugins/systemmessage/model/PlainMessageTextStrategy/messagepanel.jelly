@@ -1,0 +1,5 @@
+<?jelly escape-by-default='true'?>
+<!-- Rendering of messages in the message panel for Plain Message Text Strategy --> 
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <p>${it.getPlainMessageText()}</p>
+</j:jelly>

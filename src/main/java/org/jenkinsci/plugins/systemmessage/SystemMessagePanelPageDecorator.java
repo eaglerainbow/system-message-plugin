@@ -102,17 +102,7 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		MessageLevel ml = this.messageTextStrategy.getPanelMessageLevel();
 		return ml.getCSSClass();
 	}
-	
-	public String getMessageText() {
-		if (!this.getEnabled())
-			return "";
 		
-		if (this.messageTextStrategy == null)
-			return "";
-					
-		return this.messageTextStrategy.getMessageText();
-	}
-	
 	/**
 	 * states, if a user has logged on (and thus we don't have the anonymous user)
 	 * and thus also if security is enabled in Jenkins at all

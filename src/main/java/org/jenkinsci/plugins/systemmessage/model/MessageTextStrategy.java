@@ -26,8 +26,6 @@ public abstract class MessageTextStrategy extends AbstractDescribableImpl<Messag
 	/**
 	 * boolean indicating whether there is a message text which shall be shown 
 	 * to the user and if the configuration is consistent.
-	 * Note that if <code>true</code> is returned, <code>getMessageText()</code> 
-	 * also must be able to provide the generated text).  
 	 * @return <code>true</code> if the system message panel will be able 
 	 * to show the message text. <code>False</code> otherwise.
 	 */

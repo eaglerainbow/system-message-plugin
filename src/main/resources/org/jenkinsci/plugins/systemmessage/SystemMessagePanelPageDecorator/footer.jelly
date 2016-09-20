@@ -4,7 +4,7 @@
 <j:if test="${it.messagePanelVisible}">
 	<div id="systemmessagepanel" class="${it.panelMessageLevelCSSClass}">
 		  <p align="center" id="heading">${it.headingText}</p>
-		  <p>${it.messageText}</p>
+		  <st:include page="messagepanel.jelly" class="${it.getMessageTextStrategy().getClass()}" it="${it.getMessageTextStrategy()}" />
 		  <div id="hidelink">
 		  	<a href="javascript:org_jenkinsci_plugins_systemmessage_hidePanel('systemmessagepanel', '${it.getMessageUidsOnHideButton()}', '${rootURL}')">
 		  		<img src="${resURL}/plugin/system-message/images/whitexonred_small.png" alt="${%Hide}" />
