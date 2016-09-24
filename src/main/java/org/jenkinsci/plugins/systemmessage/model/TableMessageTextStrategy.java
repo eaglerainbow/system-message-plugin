@@ -1,5 +1,8 @@
 package org.jenkinsci.plugins.systemmessage.model;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -14,9 +17,15 @@ import hudson.Extension;
  */
 public class TableMessageTextStrategy extends MessageTextStrategy {
 	
-	@DataBoundConstructor
+	private List<PlainMessageTextStrategy> messages;
+	
 	public TableMessageTextStrategy() {
-		
+		this.messages = new LinkedList<>();
+	}
+	
+	@DataBoundConstructor
+	public TableMessageTextStrategy(List<PlainMessageTextStrategy> messages) {
+		this.messages = messages;
 	}
 	
 	@Override
@@ -31,10 +40,13 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 
 	@Override
 	public void updateOnConfigurationChange(MessageTextStrategy mtsBefore) {
-		throw new Error("Not implemented yet");
+		// throw new Error("Not implemented yet");
+		// Nothing to do so far...
 	}
 	
-	
+	public List<PlainMessageTextStrategy> getMessages() {
+		return Collections.unmodifiableList(this.messages);
+	}
 	
 	@Override
 	public Set<String> getMessageUidsOnHideButton() {

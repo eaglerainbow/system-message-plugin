@@ -19,7 +19,7 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 	private UUID messageUid;
 
 	private static final transient Logger LOGGER = Logger.getLogger(PlainMessageTextStrategy.class.toString());
-	
+		
 	@DataBoundConstructor
 	public PlainMessageTextStrategy(String plainMessageText, 
 			MessageLevel level, 
