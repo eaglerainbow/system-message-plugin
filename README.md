@@ -34,6 +34,11 @@ He is only able to read message, as he does not have the "administer" privilege 
 - [ ] Messages may be extended with link such that additional details on a message can be provided. The hyperlink may refer to an external resource (generic HTTP URL).
 - [ ] JUnit tests 
 
+# Known issue list
+- [ ] If you mark the last message of the panel as read, the panel should appear altogether (but currently does not)
+- [ ] The table of messages currently does not consider read messages at all
+- [ ] What shall be the behavior when clicking the "big hide" button in case that multiple single messages are shown? Mark them all as read or just hide the panel?
+
 # Open Tasks for which help is wanted
 
 - [ ] Improve design of message panel: that still looks awkward

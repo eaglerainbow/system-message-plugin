@@ -3,10 +3,12 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   <table border="0" width="100%">
   <j:forEach items="${it.messages}" var="message">
-	  <tr>
+	  <tr id="message-${message.getMessageUid()}">
 		  <td width="24"><img src="${resURL}/plugin/system-message/${message.getLevel().getIconPath()}" alt="${message.getLevel().getText()}" /></td>
 		  <td align="left">${message.getMessageText()}</td>
-		  <td align="right"><img src="${resURL}/plugin/system-message/images/whitexonred_small.png" alt="${%Hide this message}" width="16" height="16" /></td>
+		  <td align="right"><a href="javascript:org_jenkinsci_plugins_systemmessage_hideSingleMessage('${message.getMessageUid()}', '${rootURL}')">
+		  	<img src="${resURL}/plugin/system-message/images/whitexonred_small.png" alt="${%Hide this message}" width="16" height="16" />
+		  </a></td>
 	  </tr>
   </j:forEach>
   </table>
