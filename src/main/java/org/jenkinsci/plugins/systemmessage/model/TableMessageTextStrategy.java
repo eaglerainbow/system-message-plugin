@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
-import hudson.Extension;
+import hudson.*;
 
 /**
  * defines that the text in the system message panel shall be
@@ -30,12 +30,12 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 	
 	@Override
 	public boolean isDisplayable() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public MessageLevel getPanelMessageLevel() {
-		throw new Error("Not implemented yet");
+		return MessageLevel.WARNING; // TODO DUMMY!
 	}
 
 	@Override
