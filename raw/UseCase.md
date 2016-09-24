@@ -7,7 +7,7 @@ The group of administrators requires to be able to provide operating information
 * planned or ongoing limitations of service, and
 * known issues (or links to a list of them).
 
-For sure the administration group may broadcast these kind of messages via mailinglist to which the user should be subscribed. However, experience has shown that users are skipping to read these kind of messages (for example due to "inbox overload") or simply may forget an announcement which was made earlier.
+For sure the administration group may broadcast these kind of messages via a mailinglist to which the user should be subscribed. However, experience has shown that users are skipping to read these kind of messages (for example due to "inbox overload") or simply may forget an announcement which was made earlier.
 That is why these kind of messages (or at least brief reminders with links to further details) shall be made available from within the Jenkins server with the aim
 
 1. to easily remind users of already communicated messages, and
