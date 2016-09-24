@@ -44,8 +44,7 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 			return false;
 		
 		for(PlainMessageTextStrategy item : this.messages) {
-			if ((item.getMessageText() != null) 
-					&& !("".equals(item.getMessageText().trim()))) {
+			if (item.isDisplayable()) {
 				return true; // there is at least one thing to show
 			}
 		}
