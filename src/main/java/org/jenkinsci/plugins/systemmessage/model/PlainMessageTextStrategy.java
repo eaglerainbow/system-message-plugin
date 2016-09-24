@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 import java.util.logging.Logger;
 
 public class PlainMessageTextStrategy extends MessageTextStrategy {
+
 	private String plainMessageText;
 	private MessageLevel level;
 	private UUID messageUid;
@@ -54,6 +55,11 @@ public class PlainMessageTextStrategy extends MessageTextStrategy {
 		this.plainMessageText = plainMessageText;
 	}
 
+	@Override
+	public String getMessageText() {
+		return this.getPlainMessageText();
+	}
+	
 	public MessageLevel getLevel() {
 		return level;
 	}

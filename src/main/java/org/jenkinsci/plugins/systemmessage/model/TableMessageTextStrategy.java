@@ -30,17 +30,50 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 	
 	@Override
 	public boolean isDisplayable() {
-		return true;
+		/* We need to check the list of messages, which are provided,
+		 * to see if there is something displayable
+		 */
+		
+		if (this.messages == null)
+			// there are simply no messages at (even not a list of it)
+			return false;
+		
+		if (this.messages.isEmpty())
+			// no messages have been configured -- there is nothing to show
+			return false;
+		
+		for(PlainMessageTextStrategy item : this.messages) {
+			if ((item.getMessageText() != null) 
+					&& !("".equals(item.getMessageText().trim()))) {
+				return true; // there is at least one thing to show
+			}
+		}
+		
+		// all messages do not have anything to show
+		return false;
 	}
 
 	@Override
 	public MessageLevel getPanelMessageLevel() {
-		return MessageLevel.WARNING; // TODO DUMMY!
+		/* the "highest" message level wins 
+		 * and thus determines how to show the entire message panel
+		 */
+		
+		if (this.messages == null || this.messages.isEmpty()) {
+			// apparently there is nothing to show; so why to be critical?
+			return MessageLevel.INFORMATION;
+		}
+		
+		MessageLevel maxLevel = MessageLevel.INFORMATION;
+		for (PlainMessageTextStrategy item : this.messages) {
+			if (item.getLevel().compareTo(maxLevel) > 0) 
+				maxLevel = item.getLevel();
+		}
+		return maxLevel;
 	}
 
 	@Override
 	public void updateOnConfigurationChange(MessageTextStrategy mtsBefore) {
-		// throw new Error("Not implemented yet");
 		// Nothing to do so far...
 	}
 	
@@ -53,8 +86,7 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		throw new Error("Not implemented yet");
 	}
 
-
-
+	
 	@Extension(ordinal = 5000)
 	public static class DescriptorImpl extends MessageTextStrategyDescriptor {
 		@Override
