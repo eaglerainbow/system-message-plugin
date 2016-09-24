@@ -66,6 +66,13 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 		
 		MessageLevel maxLevel = MessageLevel.INFORMATION;
 		for (PlainMessageTextStrategy item : this.messages) {
+			if (!item.isDisplayable())
+				/* messages, which are not considered to be displayable
+				 * shall not be taken into account for determining the
+				 * theming of the message panel 
+				 */
+				continue;
+			
 			if (item.getLevel().compareTo(maxLevel) > 0) 
 				maxLevel = item.getLevel();
 		}
