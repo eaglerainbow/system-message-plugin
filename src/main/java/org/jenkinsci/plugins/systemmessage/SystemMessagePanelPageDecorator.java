@@ -71,7 +71,8 @@ public class SystemMessagePanelPageDecorator extends PageDecorator {
 		// note that this.messageTextStrategy now always points to a new instance
 		// even if the values may be the same as the old instance.
 		
-		if (!mtsBeforeImage.equals(this.messageTextStrategy)) {
+		if (mtsBeforeImage == null // may occur in case that nothing was configured before  
+				|| (!mtsBeforeImage.equals(this.messageTextStrategy))) {
 			// this wasn't just a change of the instance, but there was some 
 			// change of a configuration value as well
 			// we need to inform the instances about that, such that they
