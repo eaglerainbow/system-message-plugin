@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.jenkinsci.plugins.systemmessage.user.UserReadSystemMessagesUserProperty;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import hudson.*;
@@ -83,7 +84,8 @@ public class TableMessageTextStrategy extends MessageTextStrategy {
 	
 	@Override
 	public Set<String> getMessageUidsOnHideButton() {
-		throw new Error("Not implemented yet");
+		// TODO Unclear implementation: What shall the "big hide" button do in case of TableMessageTextStrategy?
+		return UserReadSystemMessagesUserProperty.EMPTY_MESSAGE_SET;
 	}
 
 	
