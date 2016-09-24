@@ -1,5 +1,13 @@
 <?jelly escape-by-default='true'?>
 <!-- Rendering of messages in the message panel for Plain Message Text Strategy --> 
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-  <p>Later here will be the messages...</p>
+  <table border="0" width="100%">
+  <j:forEach items="${it.messages}" var="message">
+	  <tr>
+		  <td width="24"><img src="${resURL}/plugin/system-message/${message.getLevel().getIconPath()}" /></td>
+		  <td align="left">${message.getMessageText()}</td>
+		  <td align="right">Button to hide it</td>
+	  </tr>
+  </j:forEach>
+  </table>
 </j:jelly>
