@@ -42,8 +42,9 @@ public class SystemMessagePlugin extends Plugin {
 		// safety net only
 		if (User.current() == null) {
 			try {
-				response.sendError(500);
 				response.getOutputStream().println("No user is logged on");
+				response.sendError(500);
+				return;
 			} catch (IOException e) {
 				LOGGER.warning("Unable to write error message to response");
 				return;
@@ -55,8 +56,9 @@ public class SystemMessagePlugin extends Plugin {
 			// we were unable to retrieve our User Property (and also a new one could not be created)
 			LOGGER.warning("Writing read messages failed because the user property could not be read/created");
 			try {
-				response.sendError(500);
 				response.getOutputStream().println("Unable to write Message UIds to User Properties");
+				response.sendError(500);
+				return;
 			} catch (IOException e) {
 				LOGGER.warning("Unable to write error message to response");
 				return;
