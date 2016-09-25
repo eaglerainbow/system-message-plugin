@@ -34,7 +34,7 @@ He is only able to read message, as he does not have the "administer" privilege 
 - [ ] Messages may be extended with link such that additional details on a message can be provided. The hyperlink may refer to an external resource (generic HTTP URL).
 - [ ] JUnit tests 
 
-# Known issue list
+# Known Issues List
 - [ ] If you mark the last message of the panel as read, the panel should appear altogether (but currently does not).
       The problem is even bigger than that: Also if the last "fatal" message is removed, the theming of the panel should change as well (i.e. it should be rendered as a "warning" for instance): Solution idea could be to turn the rendering stuff into a Widget (see also http://javadoc.jenkins-ci.org/hudson/widgets/Widget.html and https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/widgets/HistoryWidget/index.jelly) and retrieve all the html rendering stuff asynchronously. 
 - [ ] What shall be the behavior when clicking the "big hide" button in case that multiple single messages are shown? Possible alternatives:
@@ -43,7 +43,7 @@ He is only able to read message, as he does not have the "administer" privilege 
    * Don't show the message panel for the next x minutes
    * Don't show the message panel again until you logon again
 
-# Open Tasks for which help is wanted
+# Open Tasks for which Help is Wanted
 
 - [ ] Improve design of message panel: that still looks awkward
 
