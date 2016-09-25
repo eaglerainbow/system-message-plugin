@@ -24,8 +24,8 @@ He is only able to read message, as he does not have the "administer" privilege 
   * white/grey background in case of only infos
   * yellow-ish background in case of at least one warning
   * red background in case of at least one severe message. 
-- [ ] You may schedule messages to be only visible during a certain period of time.
-- [ ] System messages have an expiry date. After having reached that date, the system message is automatically removed from the configuration.
+- [ ] You may schedule messages to be only visible during a certain period of time (use scheduling textarea as used in job scheduling).
+- [ ] System messages have an expiry date (use calendar popover). After having reached that date, the system message is automatically removed from the configuration.
 - [x] The "hide" link is replaced with a proper button / clickable symbol.
 - [ ] Multi-Language support (system messages may need to appear in different languages, depending on the language the user has logged on) -- prio low, as in many cases administrators do not have enough time to ensure proper translation.
 - [x] Once users have read a corresponding message, users may mark them as having read them. The message then is not shown anymore.
