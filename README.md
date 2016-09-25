@@ -5,6 +5,8 @@ This Jenkins plugin allows to show a message panel on each page viewed by a user
 
 - [x] Entire logic of system message panel implementation is encapsulated in the plugin (no need to know HTML/CSS, if not really wanted to)
 - [x] The system message panel can be disabled entirely, without losing the message
+- [ ] Jenkins-Wiki page with detailed description of plugin
+- [ ] Extend Jenkins-Wiki page with documentation (what all the fields mean, when to use what etc.)
 
 # Roles
 
