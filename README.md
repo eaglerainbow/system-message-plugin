@@ -42,6 +42,7 @@ He is only able to read message, as he does not have the "administer" privilege 
    * Just hide the panel
    * Don't show the message panel for the next x minutes
    * Don't show the message panel again until you logon again
+- [ ] Once the final repository is reached, the feature list and the known issue list shall be moved to github projects and github issues.
 
 # Open Tasks for which Help is Wanted
 
